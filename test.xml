@@ -1,0 +1,14 @@
+<xmlVocManager>
+   <entries class="java.util.ArrayList">
+      <entry id="0">
+         <word>wordtext</word>
+         <translation>translationtext</translation>
+         <comment>commenttext</comment>
+      </entry>
+      <entry id="0">
+         <word>casa</word>
+         <translation>haus</translation>
+         <comment>gebaeude</comment>
+      </entry>
+   </entries>
+</xmlVocManager>

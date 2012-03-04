@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : wordlist.xml.xml
+    Created on : March 4, 2012, 6:49 PM
+    Author     : michael
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <entries>
+        <entry>
+            <word>la casa</word>
+            <translation>das Haus</translation>
+            <comment>la casa esta grande</comment>
+        </entry>
+        <entry>
+            <word>roja</word>
+            <translation>rot</translation>
+            <comment>farbe</comment>
+        </entry>
+    </entries>
+</root>
