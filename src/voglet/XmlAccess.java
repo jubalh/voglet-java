@@ -10,7 +10,7 @@ import org.simpleframework.xml.core.Persister;
  */
 public class XmlAccess {
     private String filename;
-    private VocManager manager;
+    private VocabularySet manager;
 
     public XmlAccess(String filename) throws Exception {
         this.filename = filename;
@@ -21,7 +21,7 @@ public class XmlAccess {
         Serializer serializer = new Persister();
         File f = new File(this.filename);
         if ( f.exists() )
-            this.manager = serializer.read(VocManager.class, f);
+            this.manager = serializer.read(VocabularySet.class, f);
     }
 
     public void save() throws Exception {
@@ -30,7 +30,7 @@ public class XmlAccess {
         serializer.write(this.manager, f);
     }
 
-    public VocManager getManager() {
+    public VocabularySet getManager() {
         return this.manager;
     }
 

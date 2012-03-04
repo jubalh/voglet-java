@@ -22,22 +22,22 @@ public class Main {
         Serializer serializer = new Persister();
         File f = new File("test.xml");
 
-        VocManager manager = new VocManager();
-        /*
-        Entry e = new Entry("wordtext", "translationtext", "commenttext");
-        Entry e2 = new Entry("casa", "haus", "gebaeude");
-        manager.addEntry(e);
-        manager.addEntry(e2);
-        */
+        VogletManager man = new VogletManager();
+        man.setConfiguration(new ConfigurationManager());
+        VocabularySet set = new VocabularySet("spanisch");
+        set.addEntry("casa", "haus", "gebaeude");
+        set.addEntry("roja", "rot", "farbe");
+        man.addSet(set);
+        
         try{
 
-        //serializer.write(manager, f);
-        manager = serializer.read(VocManager.class, f);
+        serializer.write(man, f);
+        /*manager = serializer.read(VocManager.class, f);
         for (int i=0; i<manager.getEntryCount(); i++ )
         {
             Entry e = manager.getRandomEntryByIndex(i);
             System.out.println(e.toString()+"\n");
-        }
+        }*/
 
         }catch(Exception ex){
             ex.printStackTrace();

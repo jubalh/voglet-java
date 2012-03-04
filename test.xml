@@ -1,14 +1,22 @@
-<xmlVocManager>
-   <entries class="java.util.ArrayList">
-      <entry id="0">
-         <word>wordtext</word>
-         <translation>translationtext</translation>
-         <comment>commenttext</comment>
-      </entry>
-      <entry id="0">
-         <word>casa</word>
-         <translation>haus</translation>
-         <comment>gebaeude</comment>
-      </entry>
-   </entries>
-</xmlVocManager>
+<vogletManager>
+   <conf>
+      <version>0.1</version>
+      <timerIntervall>0</timerIntervall>
+   </conf>
+   <sets class="java.util.ArrayList">
+      <vocabularySet language="spanisch">
+         <entries class="java.util.ArrayList">
+            <entry id="0">
+               <word>casa</word>
+               <translation>haus</translation>
+               <comment>gebaeude</comment>
+            </entry>
+            <entry id="0">
+               <word>roja</word>
+               <translation>rot</translation>
+               <comment>farbe</comment>
+            </entry>
+         </entries>
+      </vocabularySet>
+   </sets>
+</vogletManager>
