@@ -8,18 +8,30 @@
       <vocabularySet language="spanisch">
          <entries class="java.util.ArrayList">
             <entry id="0">
-               <word>casa</word>
-               <translation>haus</translation>
+               <words class="java.util.ArrayList">
+                  <string>casa</string>
+               </words>
+               <translations class="java.util.ArrayList">
+                  <string>haus</string>
+               </translations>
                <comment>gebaeude</comment>
             </entry>
             <entry id="0">
-               <word>roja</word>
-               <translation>rot</translation>
+               <words class="java.util.ArrayList">
+                  <string>roja</string>
+               </words>
+               <translations class="java.util.ArrayList">
+                  <string>rot</string>
+               </translations>
                <comment>farbe</comment>
             </entry>
             <entry id="0">
-               <word>cabeza</word>
-               <translation>der Kopf</translation>
+               <words class="java.util.ArrayList">
+                  <string>cabeza</string>
+               </words>
+               <translations class="java.util.ArrayList">
+                  <string>der Kopf</string>
+               </translations>
                <comment>Körperteil</comment>
             </entry>
          </entries>

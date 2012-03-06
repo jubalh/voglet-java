@@ -17,6 +17,7 @@ import org.simpleframework.xml.core.Persister;
  * [ ] fenster schön machen
  *     http://today.java.net/pub/a/today/2008/03/18/translucent-and-shaped-swing-windows.html
  * [ ] Entry: word und translation and arraylist
+ * [ ] GUI show all translations
  */
 public class Main {
 

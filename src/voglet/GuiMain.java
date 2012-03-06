@@ -97,7 +97,7 @@ public class GuiMain extends javax.swing.JFrame {
 
     private void setNewEntry() {
         this.actualEntry = this.set.getRandomEntry();
-        this.lblWord.setText( this.actualEntry.getWord() );
+        this.lblWord.setText( this.actualEntry.getWordByRandom() );
         this.lblCorrectTranslation.setVisible(false);
     }
 
@@ -106,7 +106,8 @@ public class GuiMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        if ( !this.tfTranslation.getText().equals( this.actualEntry.getTranslation() )) {
+        if ( !this.actualEntry.hasTranslation(this.tfTranslation.getText()) ) {
+
             this.lblCorrectTranslation.setVisible(true);
             this.lblCorrectTranslation.setText( this.actualEntry.getTranslation() );
             this.pack();
