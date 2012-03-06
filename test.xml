@@ -2,6 +2,7 @@
    <conf>
       <version>0.1</version>
       <timerIntervall>0</timerIntervall>
+      <opacity>0.9</opacity>
    </conf>
    <sets class="java.util.ArrayList">
       <vocabularySet language="spanisch">
@@ -15,6 +16,11 @@
                <word>roja</word>
                <translation>rot</translation>
                <comment>farbe</comment>
+            </entry>
+            <entry id="0">
+               <word>cabeza</word>
+               <translation>der Kopf</translation>
+               <comment>Körperteil</comment>
             </entry>
          </entries>
       </vocabularySet>

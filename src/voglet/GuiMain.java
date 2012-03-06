@@ -6,25 +6,19 @@
 
 package voglet;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author michael
  */
 public class GuiMain extends javax.swing.JFrame {
 
-    private XmlAccess voget;
+    private VocabularySet set;
     private Entry actualEntry;
     /** Creates new form GuiMain */
-    public GuiMain() {
+    public GuiMain(VocabularySet set) {
         initComponents();
-        try {
-            voget = new XmlAccess("test.xml");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e);
-        }
-
+        this.set = set;
+        this.setNewEntry();
     }
 
     /** This method is called from within the constructor to
@@ -40,14 +34,11 @@ public class GuiMain extends javax.swing.JFrame {
         tfTranslation = new javax.swing.JTextField();
         btnNext = new javax.swing.JButton();
         btnOk = new javax.swing.JButton();
-        lblCorrectWord = new javax.swing.JLabel();
         lblCorrectTranslation = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblWord.setText("word");
-
-        tfTranslation.setText("translation");
 
         btnNext.setText("Next");
         btnNext.addActionListener(new java.awt.event.ActionListener() {
@@ -63,8 +54,6 @@ public class GuiMain extends javax.swing.JFrame {
             }
         });
 
-        lblCorrectWord.setText("jLabel1");
-
         lblCorrectTranslation.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -74,36 +63,30 @@ public class GuiMain extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblWord, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                            .addComponent(tfTranslation))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCorrectTranslation)
-                            .addComponent(lblCorrectWord)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnOk)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNext)))
-                .addContainerGap(169, Short.MAX_VALUE))
+                    .addComponent(lblCorrectTranslation)
+                    .addComponent(lblWord, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(tfTranslation, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(btnOk)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnNext))))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWord)
-                    .addComponent(lblCorrectWord))
+                .addComponent(lblWord)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfTranslation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCorrectTranslation))
-                .addGap(18, 18, 18)
+                .addComponent(tfTranslation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCorrectTranslation)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNext)
                     .addComponent(btnOk))
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblWord.getAccessibleContext().setAccessibleName("lblWord");
@@ -112,34 +95,41 @@ public class GuiMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        this.actualEntry = this.voget.getManager().getRandomEntry();
+    private void setNewEntry() {
+        this.actualEntry = this.set.getRandomEntry();
         this.lblWord.setText( this.actualEntry.getWord() );
-        //this.tfTranslation.setText( this.actualEntry.getTranslation() );
+        this.lblCorrectTranslation.setVisible(false);
+    }
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        this.setNewEntry();
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         if ( !this.tfTranslation.getText().equals( this.actualEntry.getTranslation() )) {
+            this.lblCorrectTranslation.setVisible(true);
             this.lblCorrectTranslation.setText( this.actualEntry.getTranslation() );
+            this.pack();
+        } else {
+            this.dispose();
         }
     }//GEN-LAST:event_btnOkActionPerformed
 
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GuiMain().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnOk;
     private javax.swing.JLabel lblCorrectTranslation;
-    private javax.swing.JLabel lblCorrectWord;
     private javax.swing.JLabel lblWord;
     private javax.swing.JTextField tfTranslation;
     // End of variables declaration//GEN-END:variables
