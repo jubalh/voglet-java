@@ -18,7 +18,7 @@ import org.simpleframework.xml.core.Persister;
  * [x] Entry: word und translation and arraylist
  * [ ] GUI show all translations
  * [ ] set name nur einmal verwendbar (?)
- * [ ] console program
+ * [x] console program
  */
 public class Main {
 
@@ -26,10 +26,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        createExampleFile();
+        //createExampleFile();
 	//String s[] = {"--info", "--file", "test.xml", "--show", "-l", "spanisch", "--id", "2"};//###todo richtige nummer?!
-	String s[] = {"--file", "test.xml", "-l", "naviisch", "-a", "-w", "testWort", "-t", "testTranslation"};
-	//String s[] = {"--info", "--file", "test.xml", "--show", "-l", "naviisch", "--id", "2"};//###todo richtige nummer?!
+	//String s[] = {"-i","--file", "test.xml", "-l", "naviisch", "-a", "-w", "testWort", "-t", "testTranslation"};
+	String s[] = {"--info", "--file", "test.xml", "--show", "-l", "naviisch", "--id", "2"};//###todo richtige nummer?!
 	Console c = new Console(s);
     }
 

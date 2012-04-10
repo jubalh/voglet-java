@@ -119,7 +119,7 @@ public class Entry {
 	 */
 	public void setComment(String comment) {
 		if (comment.isEmpty())
-			comment = " ";//### hier gibts noch was zu tun! sonst gibts beim erneuten einlesen einen fehler.
+			comment = "_";//### hier gibts noch was zu tun! sonst gibts beim erneuten einlesen einen fehler.
 		this.comment = comment;
 	}
 
