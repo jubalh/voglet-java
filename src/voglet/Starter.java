@@ -11,7 +11,8 @@ import org.simpleframework.xml.core.Persister;
  * @author michael
  */
 public class Starter extends TimerTask {
-    private static boolean running=false;
+
+    private static boolean running = false;
 
     public void run() {
         System.out.println("run");
@@ -27,20 +28,19 @@ public class Starter extends TimerTask {
                 VogletManager manager = serializer.read(VogletManager.class, f);
                 // create new window with set
                 GuiMain window = new GuiMain(manager.getSetByRandom());
-                if ( AWTUtilities.isTranslucencySupported(AWTUtilities.Translucency.TRANSLUCENT))
-                    AWTUtilities.setWindowOpacity( window, manager.getConf().getOpacity() );
+                if (AWTUtilities.isTranslucencySupported(AWTUtilities.Translucency.TRANSLUCENT)) {
+                    AWTUtilities.setWindowOpacity(window, manager.getConf().getOpacity());
+                }
                 window.setVisible(true);
 
                 // show me all entries
-                for (int i=0; i<manager.getSet("spanisch").getEntryCount(); i++ )
-                {
-                    Entry e = manager.getSet("spanisch").getRandomEntryByIndex(i);
-                    System.out.println(e.toString()+"\n");
+                for (int i = 0; i < manager.getSet("spanisch").getEntryCount(); i++) {
+                    Entry e = manager.getSet("spanisch").getEntryByIndex(i);
+                    System.out.println(e.toString() + "\n");
                 }
-            }catch(Exception ex){
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
     }
-
 }

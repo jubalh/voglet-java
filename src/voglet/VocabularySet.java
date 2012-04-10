@@ -48,7 +48,7 @@ public class VocabularySet {
         return this.entries.get(index);
     }
 
-    public Entry getRandomEntryByIndex(int index) {
+    public Entry getEntryByIndex(int index) {
         return this.entries.get(index);
     }
 

@@ -8,7 +8,7 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 /**
- *
+: *
  * @author michael
  */
 @Root
@@ -45,6 +45,10 @@ public class VogletManager {
         return set;
     }
 
+    public List<VocabularySet> getSetAll() {
+	    return this.sets;
+    }
+
     public VocabularySet getSetByRandom() {
         int index = new Random().nextInt(this.sets.size());
         return this.sets.get(index);
@@ -56,5 +60,9 @@ public class VogletManager {
             l.add(this.sets.get(i).getLanguage());
         }
         return l;
+    }
+
+    public int getSetCount() {
+	    return this.sets.size();
     }
 }

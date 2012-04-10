@@ -1,9 +1,9 @@
 package voglet;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import org.simpleframework.xml.Attribute;
+import java.util.List;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
@@ -14,12 +14,13 @@ import org.simpleframework.xml.Root;
  */
 @Root
 public class Entry {
+
     @Attribute
     private int id;
     @ElementList
-    private List <String> words;
+    private List<String> words;
     @ElementList
-    private List <String>translations;
+    private List<String> translations;
     @Element
     private String comment;
 
@@ -80,7 +81,7 @@ public class Entry {
      */
     public void setWord(String word, int index) {
         this.words.remove(index);//...unnecessary?
-        this.words.add(index, word );
+        this.words.add(index, word);
     }
 
     /*
@@ -153,7 +154,7 @@ public class Entry {
      */
     public void setTranslation(String word, int index) {
         this.translations.remove(index);//...unnecessary?
-        this.translations.add(index, word );
+        this.translations.add(index, word);
     }
 
     /*
@@ -175,32 +176,34 @@ public class Entry {
      * searches for word in list of words
      */
     public boolean hasWord(String word) {
-       for ( String s : this.words )  {
-           if ( s.equals(word) )
-               return true;
-       }
-       return false;
+        for (String s : this.words) {
+            if (s.equals(word)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*
      * searches for translation in list of words
      */
     public boolean hasTranslation(String word) {
-       for ( String s : this.translations )  {
-           if ( s.equals(word) )
-               return true;
-       }
-       return false;
+        for (String s : this.translations) {
+            if (s.equals(word)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public String toString() {
-        String s = this.getWordCount()+" words\n"
-                + this.words.toString()+"\n"
-                + this.getTranslationCount()+" translations\n"
-                + this.translations.toString()+"\n"
-                + "Comment: "+this.comment+"\n"
-                + "ID: "+this.id;
+        String s = this.getWordCount() + " words\n"
+                + this.words.toString() + "\n"
+                + this.getTranslationCount() + " translations\n"
+                + this.translations.toString() + "\n"
+                + "Comment: " + this.comment + "\n"
+                + "ID: " + this.id;
 
         return s;
     }

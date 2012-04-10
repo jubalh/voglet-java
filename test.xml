@@ -36,5 +36,27 @@
             </entry>
          </entries>
       </vocabularySet>
+      <vocabularySet language="esperanto">
+         <entries class="java.util.ArrayList">
+            <entry id="0">
+               <words class="java.util.ArrayList">
+                  <string>domo</string>
+               </words>
+               <translations class="java.util.ArrayList">
+                  <string>haus</string>
+               </translations>
+               <comment>gebaeude</comment>
+            </entry>
+            <entry id="0">
+               <words class="java.util.ArrayList">
+                  <string>kuri</string>
+               </words>
+               <translations class="java.util.ArrayList">
+                  <string>rennen</string>
+               </translations>
+               <comment>aktivität</comment>
+            </entry>
+         </entries>
+      </vocabularySet>
    </sets>
 </vogletManager>

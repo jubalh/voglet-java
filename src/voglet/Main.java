@@ -1,6 +1,5 @@
 package voglet;
 
-import com.sun.awt.AWTUtilities;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,26 +25,28 @@ public class Main {
      */
     public static void main(String[] args) {
         createExampleFile();
-        
+        String s[] = {"info", "--file", "test.xml", "-l", "spanisch"};
+        Console c = new Console(s);
+    }
+
+    private static void test() {
         Serializer serializer = new Persister();
         File f = new File("test.xml");
+        GuiMain window;
 
         try {
             // read from xml
             VogletManager manager = serializer.read(VogletManager.class, f);
             // create new window with set
-            GuiMain window = new GuiMain(manager.getSetByRandom());
-            AWTUtilities.setWindowOpacity( window, manager.getConf().getOpacity() );
-            //window.pack();
+            window = new GuiMain(manager.getSetByRandom());
             window.setVisible(true);
-            
+
             // show me all entries
-            for (int i=0; i<manager.getSet("spanisch").getEntryCount(); i++ )
-            {
-                Entry e = manager.getSet("spanisch").getRandomEntryByIndex(i);
-                System.out.println(e.toString()+"\n");
+            for (int i = 0; i < manager.getSet("spanisch").getEntryCount(); i++) {
+                Entry e = manager.getSet("spanisch").getEntryByIndex(i);
+                System.out.println(e.toString() + "\n");
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
@@ -56,11 +57,18 @@ public class Main {
             File f = new File("test.xml");
             VogletManager man = new VogletManager();
             man.setConfiguration(new Configuration());
+
             VocabularySet set = new VocabularySet("spanisch");
             set.addEntry("casa", "haus", "gebaeude");
             set.addEntry("roja", "rot", "farbe");
             set.addEntry("cabeza", "der Kopf", "Körperteil");
             man.addSet(set);
+
+            set = new VocabularySet("esperanto");
+            set.addEntry("domo", "haus", "gebaeude");
+            set.addEntry("kuri", "rennen", "aktivität");
+            man.addSet(set);
+
             serializer.write(man, f);
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

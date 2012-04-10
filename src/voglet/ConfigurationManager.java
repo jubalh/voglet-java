@@ -2,12 +2,12 @@ package voglet;
 
 import org.simpleframework.xml.Element;
 
-
 /**
  *
  * @author michael
  */
 public class ConfigurationManager {
+
     @Element
     private String version;
     @Element
