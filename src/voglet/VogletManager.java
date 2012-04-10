@@ -62,7 +62,7 @@ public class VogletManager {
         return l;
     }
 
-    public int getSetCount() {
+    public Integer getSetCount() {
 	    return this.sets.size();
     }
 }

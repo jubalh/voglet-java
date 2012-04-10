@@ -2,12 +2,12 @@ package voglet;
 
 import org.simpleframework.xml.Element;
 
+
 /**
  *
  * @author michael
  */
 public class Configuration {
-
     @Element
     private String version;
     @Element
@@ -45,15 +45,15 @@ public class Configuration {
         this.version = version;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder s = new StringBuilder();
-        String NEW_LINE = System.getProperty("line.separator");
+	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		String NEW_LINE = System.getProperty( "line.separator" );
 
-        s.append("Version: " + this.getVersion() + NEW_LINE);
-        s.append("TimerInterval: " + this.getTimerIntervall() + NEW_LINE);
-        s.append("Opacity: " + this.getOpacity() + NEW_LINE);
+		s.append( "Version: " + this.getVersion() + NEW_LINE );
+		s.append( "TimerInterval: " + this.getTimerIntervall() + NEW_LINE );
+		s.append( "Opacity: " + this.getOpacity() + NEW_LINE );
 
-        return s.toString();
-    }
+		return s.toString();
+	}
 }

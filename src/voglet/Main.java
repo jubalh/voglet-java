@@ -15,8 +15,10 @@ import org.simpleframework.xml.core.Persister;
  * [ ] fenster per tastatur steuerbar
  * [ ] fenster schön machen
  *     http://today.java.net/pub/a/today/2008/03/18/translucent-and-shaped-swing-windows.html
- * [ ] Entry: word und translation and arraylist
+ * [x] Entry: word und translation and arraylist
  * [ ] GUI show all translations
+ * [ ] set name nur einmal verwendbar (?)
+ * [ ] console program
  */
 public class Main {
 
@@ -25,32 +27,34 @@ public class Main {
      */
     public static void main(String[] args) {
         createExampleFile();
-        String s[] = {"info", "--file", "test.xml", "-l", "spanisch"};
-        Console c = new Console(s);
+	//String s[] = {"--info", "--file", "test.xml", "--show", "-l", "spanisch", "--id", "2"};//###todo richtige nummer?!
+	String s[] = {"--file", "test.xml", "-l", "naviisch", "-a", "-w", "testWort", "-t", "testTranslation"};
+	//String s[] = {"--info", "--file", "test.xml", "--show", "-l", "naviisch", "--id", "2"};//###todo richtige nummer?!
+	Console c = new Console(s);
     }
 
     private static void test() {
-        Serializer serializer = new Persister();
-        File f = new File("test.xml");
-        GuiMain window;
+	Serializer serializer = new Persister();
+	File f = new File("test.xml");
+	GuiMain window;
 
-        try {
-            // read from xml
-            VogletManager manager = serializer.read(VogletManager.class, f);
-            // create new window with set
-            window = new GuiMain(manager.getSetByRandom());
-            window.setVisible(true);
+	try {
+	    // read from xml
+	    VogletManager manager = serializer.read(VogletManager.class, f);
+	    // create new window with set
+	    window = new GuiMain(manager.getSetByRandom());
+	    window.setVisible(true);
 
-            // show me all entries
-            for (int i = 0; i < manager.getSet("spanisch").getEntryCount(); i++) {
-                Entry e = manager.getSet("spanisch").getEntryByIndex(i);
-                System.out.println(e.toString() + "\n");
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+	    // show me all entries
+	    for (int i=0; i<manager.getSet("spanisch").getEntryCount(); i++ )
+	    {
+		Entry e = manager.getSet("spanisch").getEntryByIndex(i);
+		System.out.println(e.toString()+"\n");
+	    }
+	}catch(Exception ex){
+	    ex.printStackTrace();
+	}
     }
-
     static private void createExampleFile() {
         try {
             Serializer serializer = new Persister();
@@ -58,16 +62,16 @@ public class Main {
             VogletManager man = new VogletManager();
             man.setConfiguration(new Configuration());
 
-            VocabularySet set = new VocabularySet("spanisch");
+	    VocabularySet set = new VocabularySet("spanisch");
             set.addEntry("casa", "haus", "gebaeude");
             set.addEntry("roja", "rot", "farbe");
             set.addEntry("cabeza", "der Kopf", "Körperteil");
             man.addSet(set);
 
-            set = new VocabularySet("esperanto");
+	    set = new VocabularySet("esperanto");
             set.addEntry("domo", "haus", "gebaeude");
-            set.addEntry("kuri", "rennen", "aktivität");
-            man.addSet(set);
+	    set.addEntry("kuri", "rennen", "aktivität");
+	    man.addSet(set);
 
             serializer.write(man, f);
         } catch (Exception ex) {

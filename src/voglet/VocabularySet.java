@@ -11,56 +11,61 @@ import org.simpleframework.xml.ElementList;
  * @author michael
  */
 public class VocabularySet {
-    @Attribute
-    private String language;
 
-    @ElementList
-    private List <Entry> entries;
-    
-    public VocabularySet(String language) {
-        this.language = language;
-        this.init();
-    }
+	@Attribute
+	private String language;
+	@ElementList
+	private List<Entry> entries;
 
-    public VocabularySet() {
-        this.init();
-    }
+	public VocabularySet(String language) {
+		this.language = language;
+		this.init();
+	}
 
-    private void init() {
-        this.entries = new ArrayList<Entry>();
-    }
+	public VocabularySet() {
+		this.init();
+	}
 
-    public void addEntry(Entry e) {
-        this.entries.add(e);
-    }
+	private void init() {
+		this.entries = new ArrayList<Entry>();
+	}
 
-    public void addEntry(String word, String translation, String comment) {
-        Entry e = new Entry(word, translation, comment);
-        this.addEntry(e);
-    }
+	public void addEntry(Entry e) {
+		e.setId( this.getNextEntryId() );
+		this.entries.add(e);
+	}
 
-    public void removeEntry(Entry e) {
-        this.entries.remove(e);
-    }
+	private Integer getNextEntryId() {
+		return this.getEntryCount()+1;
+	}
+	public void addEntry(String word, String translation, String comment) {
+		Entry e = new Entry(word, translation, comment);
+		e.setId( this.getNextEntryId() );
+		this.addEntry(e);
+	}
 
-    public Entry getRandomEntry() {
-        int index = new Random().nextInt(this.entries.size());
-        return this.entries.get(index);
-    }
+	public void removeEntry(Entry e) {
+		this.entries.remove(e);
+	}
 
-    public Entry getEntryByIndex(int index) {
-        return this.entries.get(index);
-    }
+	public Entry getRandomEntry() {
+		int index = new Random().nextInt(this.entries.size());
+		return this.entries.get(index);
+	}
 
-    public int getEntryCount() {
-        return this.entries.size();
-    }
+	public Entry getEntryByIndex(int index) {
+		return this.entries.get(index);
+	}
 
-    public String getLanguage() {
-        return language;
-    }
+	public Integer getEntryCount() {
+		return this.entries.size();
+	}
 
-    public void setLanguage(String language) {
-        this.language = language;
-    }
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
 }

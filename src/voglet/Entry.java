@@ -15,196 +15,206 @@ import org.simpleframework.xml.Root;
 @Root
 public class Entry {
 
-    @Attribute
-    private int id;
-    @ElementList
-    private List<String> words;
-    @ElementList
-    private List<String> translations;
-    @Element
-    private String comment;
+	@Attribute
+	private int id;
+	@ElementList
+	private List<String> words;
+	@ElementList
+	private List<String> translations;
+	@Element
+	private String comment;
 
-    public Entry(String word, String translation, String comment) {
-        this.init();
-        this.words.add(word);
-        this.translations.add(translation);
-        this.comment = comment;
-    }
+	public Entry(String word, String translation, String comment) {
+		this.init();
+		this.words.add(word);
+		this.translations.add(translation);
+		this.setComment(comment);
+	}
 
-    public Entry() {
-        this.init();
-    }
+	public Entry() {
+		this.init();
+	}
 
-    private void init() {
-        this.words = new ArrayList<String>();
-        this.translations = new ArrayList<String>();
-    }
+	private void init() {
+		this.words = new ArrayList<String>();
+		this.translations = new ArrayList<String>();
+	}
 
-    /*
-     * returns how many synonyms the words have(include the word itself)
-     */
-    public int getWordCount() {
-        return this.words.size();
-    }
+	public int getId() {
+		return id;
+	}
 
-    /*
-     * returns the word specified by index
-     */
-    public String getWord(int index) {
-        return this.words.get(index);
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    /*
-     * returns the word with index 0
-     */
-    public String getWord() {
-        return this.getWord(0);
-    }
+	/*
+	 * returns how many synonyms the words have(include the word itself)
+	 */
+	public int getWordCount() {
+		return this.words.size();
+	}
 
-    /*
-     * returns the word or an synonym by random
-     */
-    public String getWordByRandom() {
-        int index = new Random().nextInt(this.words.size());
-        return this.getWord(index);
-    }
+	/*
+	 * returns the word specified by index
+	 */
+	public String getWord(int index) {
+		return this.words.get(index);
+	}
 
-    /*
-     * returns all words
-     */
-    public List getAllWords() {
-        return this.words;
-    }
+	/*
+	 * returns the word with index 0
+	 */
+	public String getWord() {
+		return this.getWord(0);
+	}
 
-    /*
-     * sets word with specific index
-     */
-    public void setWord(String word, int index) {
-        this.words.remove(index);//...unnecessary?
-        this.words.add(index, word);
-    }
+	/*
+	 * returns the word or an synonym by random
+	 */
+	public String getWordByRandom() {
+		int index = new Random().nextInt(this.words.size());
+		return this.getWord(index);
+	}
 
-    /*
-     * clears synonyms and just adds the word
-     */
-    public void setWord(String word) {
-        this.words.clear();
-        this.words.add(word);
-    }
+	/*
+	 * returns all words
+	 */
+	public List getAllWords() {
+		return this.words;
+	}
 
-    /*
-     * adds synonyms
-     */
-    public void addWordSynonym(String synonym) {
-        this.words.add(synonym);
-    }
+	/*
+	 * sets word with specific index
+	 */
+	public void setWord(String word, int index) {
+		this.words.remove(index);//...unnecessary?
+		this.words.add(index, word);
+	}
 
-    /*
-     * returns the comment
-     */
-    public String getComment() {
-        return comment;
-    }
+	/*
+	 * clears synonyms and just adds the word
+	 */
+	public void setWord(String word) {
+		this.words.clear();
+		this.words.add(word);
+	}
 
-    /*
-     * sets a comment
-     */
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+	/*
+	 * adds synonyms
+	 */
+	public void addWordSynonym(String synonym) {
+		this.words.add(synonym);
+	}
 
-    /*
-     * returns how many translations are available
-     */
-    public int getTranslationCount() {
-        return this.translations.size();
-    }
+	/*
+	 * returns the comment
+	 */
+	public String getComment() {
+		return comment;
+	}
 
-    /*
-     * returns the translation specified by index
-     */
-    public String getTranslation(int index) {
-        return this.translations.get(index);
-    }
+	/*
+	 * sets a comment
+	 */
+	public void setComment(String comment) {
+		if (comment.isEmpty())
+			comment = " ";//### hier gibts noch was zu tun! sonst gibts beim erneuten einlesen einen fehler.
+		this.comment = comment;
+	}
 
-    /*
-     * returns the translation with index 0
-     */
-    public String getTranslation() {
-        return this.getTranslation(0);
-    }
+	/*
+	 * returns how many translations are available
+	 */
+	public int getTranslationCount() {
+		return this.translations.size();
+	}
 
-    /*
-     * returns a random translation
-     */
-    public String getTranslationByRandom() {
-        int index = new Random().nextInt(this.translations.size());
-        return this.getTranslation(index);
-    }
+	/*
+	 * returns the translation specified by index
+	 */
+	public String getTranslation(int index) {
+		return this.translations.get(index);
+	}
 
-    /*
-     * returns all translation
-     */
-    public List getAllTranslations() {
-        return this.translations;
-    }
+	/*
+	 * returns the translation with index 0
+	 */
+	public String getTranslation() {
+		return this.getTranslation(0);
+	}
 
-    /*
-     * sets translation with specific index
-     */
-    public void setTranslation(String word, int index) {
-        this.translations.remove(index);//...unnecessary?
-        this.translations.add(index, word);
-    }
+	/*
+	 * returns a random translation
+	 */
+	public String getTranslationByRandom() {
+		int index = new Random().nextInt(this.translations.size());
+		return this.getTranslation(index);
+	}
 
-    /*
-     * just adds this one translation and removes all others
-     */
-    public void setTranslation(String word) {
-        this.translations.clear();
-        this.translations.add(word);
-    }
+	/*
+	 * returns all translation
+	 */
+	public List getAllTranslations() {
+		return this.translations;
+	}
 
-    /*
-     * adds synonyms
-     */
-    public void addTranslation(String synonym) {
-        this.translations.add(synonym);
-    }
+	/*
+	 * sets translation with specific index
+	 */
+	public void setTranslation(String word, int index) {
+		this.translations.remove(index);//...unnecessary?
+		this.translations.add(index, word);
+	}
 
-    /*
-     * searches for word in list of words
-     */
-    public boolean hasWord(String word) {
-        for (String s : this.words) {
-            if (s.equals(word)) {
-                return true;
-            }
-        }
-        return false;
-    }
+	/*
+	 * just adds this one translation and removes all others
+	 */
+	public void setTranslation(String word) {
+		this.translations.clear();
+		this.translations.add(word);
+	}
 
-    /*
-     * searches for translation in list of words
-     */
-    public boolean hasTranslation(String word) {
-        for (String s : this.translations) {
-            if (s.equals(word)) {
-                return true;
-            }
-        }
-        return false;
-    }
+	/*
+	 * adds synonyms
+	 */
+	public void addTranslation(String synonym) {
+		this.translations.add(synonym);
+	}
 
-    @Override
-    public String toString() {
-        String s = this.getWordCount() + " words\n"
-                + this.words.toString() + "\n"
-                + this.getTranslationCount() + " translations\n"
-                + this.translations.toString() + "\n"
-                + "Comment: " + this.comment + "\n"
-                + "ID: " + this.id;
+	/*
+	 * searches for word in list of words
+	 */
+	public boolean hasWord(String word) {
+		for (String s : this.words) {
+			if (s.equals(word)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-        return s;
-    }
+	/*
+	 * searches for translation in list of words
+	 */
+	public boolean hasTranslation(String word) {
+		for (String s : this.translations) {
+			if (s.equals(word)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		String s = this.getWordCount() + " words\n"
+			+ this.words.toString() + "\n"
+			+ this.getTranslationCount() + " translations\n"
+			+ this.translations.toString() + "\n"
+			+ "Comment: " + this.comment + "\n"
+			+ "ID: " + this.id;
+
+		return s;
+	}
 }
