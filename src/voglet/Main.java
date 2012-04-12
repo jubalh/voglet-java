@@ -6,20 +6,19 @@ import java.util.logging.Logger;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
+/*
+<pre>
+* {@code
+* public List<Object> getObjects() {
+*    return objects;
+* }
+* </pre>
+*/
+
 /**
- *
+ * Main Class
  * @author michael
- * TODO:
- * [ ] fenster mit timer aufrufen
- *     https://encrypted.google.com/#hl=de&sclient=psy-ab&q=java+scheduledexecutorservice&pbx=1&oq=JAVA+SCHEDU&aq=1&aqi=g4&aql=&gs_sm=3&gs_upl=25224l25856l1l28727l6l5l0l1l1l0l137l591l1.4l6l0&gs_l=hp.3.1.0l4.25224l25856l1l28727l6l5l0l1l1l0l137l591l1j4l6l0&bav=on.2,or.r_gc.r_pw.r_qf.,cf.osb&fp=14438979447bcb8e&biw=1429&bih=1042
- * [ ] fenster per tastatur steuerbar
- * [ ] fenster schön machen
- *     http://today.java.net/pub/a/today/2008/03/18/translucent-and-shaped-swing-windows.html
- * [x] Entry: word und translation and arraylist
- * [ ] GUI show all translations
- * [ ] set name nur einmal verwendbar (?)
- * [x] console program
- */
+  */
 public class Main {
 
     /**
@@ -30,7 +29,8 @@ public class Main {
 	//String s[] = {"--info", "--file", "test.xml", "--show", "-l", "spanisch", "--id", "2"};//###todo richtige nummer?!
 	//String s[] = {"-i","--file", "test.xml", "-l", "naviisch", "-a", "-w", "testWort", "-t", "testTranslation"};
 	String s[] = {"--info", "--file", "test.xml", "--show", "-l", "naviisch", "--id", "2"};//###todo richtige nummer?!
-	Console c = new Console(s);
+	//String s[] = {""};
+        Console c = new Console(s);
     }
 
     private static void test() {
@@ -55,6 +55,7 @@ public class Main {
 	    ex.printStackTrace();
 	}
     }
+
     static private void createExampleFile() {
         try {
             Serializer serializer = new Persister();
