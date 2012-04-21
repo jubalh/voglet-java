@@ -6,15 +6,6 @@ import java.util.logging.Logger;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-/*
-<pre>
-* {@code
-* public List<Object> getObjects() {
-*    return objects;
-* }
-* </pre>
-*/
-
 /**
  * Main Class
  * @author michael
@@ -28,7 +19,7 @@ public class Main {
         //createExampleFile();
 	//String s[] = {"--info", "--file", "test.xml", "--show", "-l", "spanisch", "--id", "2"};//###todo richtige nummer?!
 	//String s[] = {"-i","--file", "test.xml", "-l", "naviisch", "-a", "-w", "testWort", "-t", "testTranslation"};
-	String s[] = {"--info", "--file", "test.xml", "--show", "-l", "naviisch", "--id", "2"};//###todo richtige nummer?!
+	String s[] = {"--info", "--file", "test.xml", "--show", "-l", "naviisch", "--id", "2"};
 	//String s[] = {""};
         Console c = new Console(s);
     }

@@ -13,7 +13,7 @@ import org.simpleframework.xml.ElementList;
 public class VocabularySet {
 
 	@Attribute
-	private String language;//TODO: rename in identifier
+	private String language;
 	@ElementList
 	private List<Entry> entries;
 
